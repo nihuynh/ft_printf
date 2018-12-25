@@ -23,5 +23,21 @@ long double
 
 
 {'d', &buff_digit}, {'i', &buff_digit}, {'o', &buff_octal},
-		{'u', &buff_hex}, {'x', &buff_hex}, {'X', &buff_hex_up},
-		{'f', &buff_double}, {'d', &buff_double},
+{'u', &buff_hex}, {'x', &buff_hex}, {'X', &buff_hex_up},
+{'f', &buff_double}, {'d', &buff_double},
+static inline void	init_parse(char key, t_config *config)
+{
+	int	type;
+	const t_config index_config[] = {
+		{'c', &putchar_buff}, {'s', &putstr_buff}, {'p', &putptr_buff}, {0, NULL}
+	};
+
+	type = 0;
+	while (index_config[type].token != 0)
+	{
+		if (index_config[type].token == key)
+			break;
+		type++;
+	}
+	config = ft_memcpy(config, &index_config[type], sizeof(t_config));
+}

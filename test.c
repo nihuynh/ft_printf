@@ -6,20 +6,37 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/24 07:00:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/25 02:06:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+int	ft_printf(const char *format, ...);
+
+int	weird_test()
+{
+	printf("%20.15d\n", 54321);
+	printf("%-10d\n", 3);
+	printf("% d\n", 3);
+	printf("%+d\n", 3);
+	printf("%010d\n", 1);
+	return (0);
+}
+
+void	basic_test(void)
+{
+	ft_printf("Just a string\n");
+	ft_printf("%s\n", "Just a string arg");
+	ft_printf("Enterasmfnipksdnce %s\n", "string");
+	ft_printf("%d\n", 5000);
+	ft_printf("Enterlace %d\n", 5000);
+	ft_printf("%c\n", 'w');
+	ft_printf("Enterlace %c\n", 'q');
+}
 
 int		main(void)
 {
-	ft_printf("%20.15d\n", 54321);
-	ft_printf("%-10d\n", 3);
-	ft_printf("% d\n", 3);
-	ft_printf("%+d\n", 3);
-	ft_printf("%010d\n", 1);
-	ft_printf("%\n");
-	ft_printf("%%#08x\n", 42);
+	//weird_test();
+	basic_test();
 	return (0);
 }
