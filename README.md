@@ -41,3 +41,30 @@ static inline void	init_parse(char key, t_config *config)
 	}
 	config = ft_memcpy(config, &index_config[type], sizeof(t_config));
 }
+
+form_unknown
+flag_space			/* for ' ' */
+flag_plus			/* for '+' */
+flag_minus			/* for '-' */
+flag_hash			/* for '#' */
+flag_zero			/* for '0' */
+
+width_asterics		/* for '*' */
+width				/* for '1'...'9' */
+precision			/* for '.' */
+
+mod_half			/* for 'h' */
+mod_halfhalf
+mod_long			/* for 'l' */
+mod_longlong
+
+form_percent		/* for '%' */
+
+form_integer		/* for 'd', 'i' */
+form_unsigned		/* for 'u' */
+form_octal			/* for 'o' */
+form_hexa			/* for 'X', 'x' */
+form_float			/* for 'f' */
+form_character		/* for 'c' */
+form_string			/* for 's', 'S' */
+form_pointer		/* for 'p' */

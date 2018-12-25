@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/25 02:12:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/25 05:53:13 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <unistd.h>
 #include <string.h>
 #include "ft_printf.h"
-#include "libft.h"
+#include "ftstring.h"
+#include "ftconvert.h"
 
 static inline void flush_buff(t_data *data)
 {
@@ -27,7 +28,7 @@ static inline int is_ending_flag(char c)
 {
 	char *flags;
 
-	flags = "cspdiouxXf%";
+	flags = END_FLAG;
 	while (*flags)
 	{
 		if (*flags == c)
@@ -37,6 +38,14 @@ static inline int is_ending_flag(char c)
 	return (0);
 }
 
+/*
+**	ft_process is the dispacher.
+**	It built the config.
+**	Invoke the right function to convert the va_arg.
+**	return the offset to move in the format string.
+*/
+
+
 static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 {
 	size_t	offset;
@@ -45,17 +54,18 @@ static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 	offset = 1;
 	while (format[offset] && !is_ending_flag(format[offset]))
 		offset++;
-	if (format[offset] == 'c')
+	if (format[offset] == '\0')
+		return (1);
+	else if (format[offset] == 'c')
 		d->buff[d->idx++] = (char)va_arg(vl, int);
+	else if (format[offset] == '%')
+		d->buff[d->idx++] = '%';
 	else if (format[offset] == 's')
-	{
-		tmp = (char *)va_arg(vl, char*);
-		d->idx += ft_strlcpy(&d->buff[d->idx], tmp, BUFF_SIZE - d->idx);
-	}
+		d->idx += ft_strlcpy(&d->buff[d->idx], (char *)va_arg(vl, char*), PF_BUFF - d->idx);
 	else if (format[offset] == 'd')
 	{
 		tmp = ft_itoa((int)va_arg(vl, int));
-		d->idx += ft_strlcpy(&d->buff[d->idx], tmp, BUFF_SIZE - d->idx);
+		d->idx += ft_strlcpy(&d->buff[d->idx], tmp, PF_BUFF - d->idx);
 		ft_strdel(&tmp);
 	}
 	return (offset + 1);
@@ -76,7 +86,7 @@ int	ft_printf(const char *format, ...)
 			format += ft_process(format, &data, vl);
 		else
 			data.buff[data.idx++] = *format++;
-		if (data.idx > BUFF_SIZE - 50 || data.buff[data.idx] == '\n')
+		if (data.idx > PF_BUFF - 50)
 			flush_buff(&data);
 	}
 	flush_buff(&data);

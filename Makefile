@@ -6,12 +6,14 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2018/12/25 02:03:18 by nihuynh          ###   ########.fr        #
+#    Updated: 2018/12/25 05:36:03 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	libftprintf.a
 SRC		:=	ft_printf.c
+SRC		+=	ft_bzero.c ft_itoa.c ft_memcpy.c ft_min.c ft_strlcpy.c\
+			ft_strlen.c ft_strnew.c ft_strdel.c
 # directories :
 SRCDIR	:=	srcs
 OBJDIR	:=	objs
@@ -20,7 +22,7 @@ INCDIR	:=	includes
 CC		:=	clang
 CFLAGS	:=	-Werror -Wall -Wextra -I includes
 OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-INC		:=	-I $(INCDIR) -I ../lib/libft/includes
+INC		:=	-I $(INCDIR)
 # **************************************************************************** #
 all : $(NAME)
 .PHONY: all
@@ -31,6 +33,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(INC)
 clean :
 	rm -f $(OBJ)
+	rm -f UT_printf.out
 	rmdir $(OBJDIR) 2> /dev/null || true
 .PHONY: clean
 fclean : clean
@@ -39,7 +42,6 @@ fclean : clean
 re : fclean all
 .PHONY: re
 run: all
-	$(CC) $(CFLAGS) test.c -o UT_printf.out $(INC) $(NAME) ../lib/libft/libft.a
+	$(CC) $(CFLAGS) test.c -o UT_printf.out $(INC) $(NAME)
 	./UT_printf.out
-	rm -f UT_printf.out
 .PHONY: run
