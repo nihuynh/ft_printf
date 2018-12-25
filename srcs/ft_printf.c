@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/25 02:07:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/25 02:12:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static inline int is_ending_flag(char c)
 	return (0);
 }
 
-static inline size_t ft_process(const char *format, t_data *data, va_list vl)
+static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 {
 	size_t	offset;
 	char	*tmp;
@@ -46,16 +46,16 @@ static inline size_t ft_process(const char *format, t_data *data, va_list vl)
 	while (format[offset] && !is_ending_flag(format[offset]))
 		offset++;
 	if (format[offset] == 'c')
-		data->buff[data->idx++] = (char)va_arg(vl, int);
+		d->buff[d->idx++] = (char)va_arg(vl, int);
 	else if (format[offset] == 's')
 	{
 		tmp = (char *)va_arg(vl, char*);
-		data->idx += ft_strlcpy(&data->buff[data->idx], tmp, BUFF_SIZE - data->idx);
+		d->idx += ft_strlcpy(&d->buff[d->idx], tmp, BUFF_SIZE - d->idx);
 	}
 	else if (format[offset] == 'd')
 	{
 		tmp = ft_itoa((int)va_arg(vl, int));
-		data->idx += ft_strlcpy(&data->buff[data->idx], tmp, BUFF_SIZE - data->idx);
+		d->idx += ft_strlcpy(&d->buff[d->idx], tmp, BUFF_SIZE - d->idx);
 		ft_strdel(&tmp);
 	}
 	return (offset + 1);
