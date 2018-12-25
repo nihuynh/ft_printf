@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 10:22:40 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/03/30 10:22:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/25 06:16:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(char const *str)
 {
-	size_t len;
+	char *pstr;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	pstr = (char*)str;
+	while (*pstr)
+		pstr++;
+	return ((size_t)(pstr - str));
 }
