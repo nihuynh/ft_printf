@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/25 06:05:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/25 06:07:33 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define PF_BUFF	2048
 # define CONF_FLAG	"#0+- "
 # define MOD_FLAG	"hl"
-# define END_FLAG	"diouxXDOUeEfFgGaACcSspn%"
-# define MIN_FLAG	"cspdiouxXf%"
+# define MIN_FLAG	"diouxXDOUeEfFgGaACcSspn%"
+# define END_FLAG	"cspdiouxXf%"
 
 typedef struct	s_config
 {
