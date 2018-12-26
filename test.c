@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/25 04:20:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/26 19:28:51 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	basic_test(void)
 {
 	ft_printf("Just a string\n");
 	ft_printf("%s\n", "Just a string arg");
-	ft_printf("Enterasmfnipksdnce %s\n", "string");
+	ft_printf("Enterlace %s\n", "string");
 	ft_printf("%d\n", 5000);
 	ft_printf("Enterlace %d\n", 5000);
 	ft_printf("%c\n", 'w');

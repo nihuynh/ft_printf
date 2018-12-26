@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   form_integer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 08:13:30 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/11/26 02:16:21 by sklepper         ###   ########.fr       */
+/*   Created: 2018/12/26 18:21:02 by nihuynh           #+#    #+#             */
+/*   Updated: 2018/12/26 18:54:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdarg.h>
 #include "ftstring.h"
+#include "ft_printf.h"
 
-char	*ft_itoa(int value)
+int		form_integer(va_list vl, t_data *d)
 {
-	char			*res;
-	int				idx;
-	unsigned int	carry;
+	int	res;
 
-	carry = (value > 0) ? value : -value;
-	idx = (value < 0) ? 2 : 1;
-	while (carry /= 10)
-		idx++;
-	carry = (value > 0) ? value : -value;
-	if (!(res = ft_strnew(idx)))
-		return (NULL);
-	res[0] = (value < 0) ? '-' : '0';
-	while (carry)
-	{
-		res[--idx] = carry % 10 + 48;
-		carry /= 10;
-	}
+	ft_itob_base((int)va_arg(vl, int), 10, (char *)&d->tmp, 0);
+	res = ft_strlcpy(&d->buff[d->idx], (const char *)&d->tmp, PF_BUFF - d->idx);
 	return (res);
 }

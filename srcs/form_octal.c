@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   form_octal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 10:21:25 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/03/30 10:21:25 by nihuynh          ###   ########.fr       */
+/*   Created: 2018/12/26 18:21:05 by nihuynh           #+#    #+#             */
+/*   Updated: 2018/12/26 18:54:42 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdarg.h>
+#include "ftstring.h"
+#include "ft_printf.h"
 
-void	ft_strdel(char **as)
+int		form_octal(va_list vl, t_data *d)
 {
-	if (as)
-	{
-		free(*as);
-		*as = NULL;
-	}
+	int	res;
+
+	ft_itob_base((int)va_arg(vl, int), 8, (char *)&d->tmp, 0);
+	res = ft_strlcpy(&d->buff[d->idx], (const char *)&d->tmp, PF_BUFF - d->idx);
+	return (res);
 }

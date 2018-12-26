@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/26 02:52:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/26 19:40:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 #include <string.h>
+#include <stdarg.h>
 
 # define PF_BUFF	2048
 # define CONF_FLAG	"#0+- "
@@ -21,35 +22,49 @@
 # define MIN_FLAG	"diouxXDOUeEfFgGaACcSspn%"
 # define END_FLAG	"cspdiouxXf%"
 
+# define FLAG_HALF		(1UL)
+# define FLAG_HALFHALF	(1UL << 1)
+# define FLAG_LONG		(1UL << 2)
+# define FLAG_LONGLONG	(1UL << 3)
+# define FLAG_INTMAX	(1UL << 4)
+# define FLAG_SIZE_T	(1UL << 5)
+# define FLAG_UPCASE	(1UL << 6)
+# define FLAG_SHOWSIGN	(1UL << 7)
+
+typedef struct s_data	t_data;
+typedef int (*conv_table)(va_list vl, t_data *data);
+
 typedef struct	s_config
 {
-	int			space;
-	int			left;
-	int			showsign;
-	int			is_long_double;
-	int			is_short;
-	int			is_char;
-	int			is_long;
-	int			width;
-	int			prec;
-	int			pad;
+	char	flags;
+	int		space;
+	int		width;
+	int		prec;
+	int		lpad;
+	int		rpad;
 }				t_config;
 
-typedef struct	s_data
+struct			s_data
 {
 	size_t		idx;
 	size_t		carry;
 	t_config	conf;
 	char		buff[PF_BUFF];
 	char		tmp[50];
-}				t_data;
-
-typedef struct	s_form
-{
-	char		token;
-	int			(*convert)(va_list vl, t_data *data);
-}				t_form;
+	conv_table	table[256];
+};
 
 int				ft_itob_base(int value, int base, char *buff, int upcase);
+
+int				form_unknown(va_list vl, t_data *data);
+int				form_percent(va_list vl, t_data *data);
+int				form_integer(va_list vl, t_data *data);
+int				form_unsigned(va_list vl, t_data *data);
+int				form_octal(va_list vl, t_data *data);
+int				form_hexa(va_list vl, t_data *data);
+int				form_float(va_list vl, t_data *data);
+int				form_character(va_list vl, t_data *data);
+int				form_string(va_list vl, t_data *data);
+int				form_pointer(va_list vl, t_data *data);
 
 #endif
