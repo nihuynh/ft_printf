@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/25 06:07:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/26 02:52:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ typedef struct	s_form
 	char		token;
 	int			(*convert)(va_list vl, t_data *data);
 }				t_form;
+
+int				ft_itob_base(int value, int base, char *buff, int upcase);
 
 #endif

@@ -6,12 +6,12 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2018/12/25 06:13:53 by nihuynh          ###   ########.fr        #
+#    Updated: 2018/12/26 03:30:42 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	libftprintf.a
-SRC		:=	ft_printf.c
+SRC		:=	ft_printf.c ft_itob_base.c
 SRC		+=	ft_bzero.c ft_itoa.c ft_memcpy.c ft_strlcpy.c\
 			ft_strlen.c ft_strnew.c ft_strdel.c
 # directories :

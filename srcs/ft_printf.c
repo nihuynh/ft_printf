@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/25 05:53:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/12/26 02:47:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static inline int is_ending_flag(char c)
 static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 {
 	size_t	offset;
-	char	*tmp;
 
 	offset = 1;
 	while (format[offset] && !is_ending_flag(format[offset]))
@@ -64,9 +63,18 @@ static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 		d->idx += ft_strlcpy(&d->buff[d->idx], (char *)va_arg(vl, char*), PF_BUFF - d->idx);
 	else if (format[offset] == 'd')
 	{
-		tmp = ft_itoa((int)va_arg(vl, int));
-		d->idx += ft_strlcpy(&d->buff[d->idx], tmp, PF_BUFF - d->idx);
-		ft_strdel(&tmp);
+		ft_itob_base((int)va_arg(vl, int), 10, (char *)&d->tmp, 0);
+		d->idx += ft_strlcpy(&d->buff[d->idx], (const char *)&d->tmp, PF_BUFF - d->idx);
+	}
+	else if (format[offset] == 'x')
+	{
+		ft_itob_base((int)va_arg(vl, int), 16, (char *)&d->tmp, 0);
+		d->idx += ft_strlcpy(&d->buff[d->idx], (const char *)&d->tmp, PF_BUFF - d->idx);
+	}
+	else if (format[offset] == 'X')
+	{
+		ft_itob_base((int)va_arg(vl, int), 16, (char *)&d->tmp, 1);
+		d->idx += ft_strlcpy(&d->buff[d->idx], (const char *)&d->tmp, PF_BUFF - d->idx);
 	}
 	return (offset + 1);
 }

@@ -68,3 +68,16 @@ form_float			/* for 'f' */
 form_character		/* for 'c' */
 form_string			/* for 's', 'S' */
 form_pointer		/* for 'p' */
+
+
+form_unknown
+form_percent
+form_integer
+form_unsigned
+form_octal
+form_hexa
+form_float
+form_character
+form_string
+form_pointer
+
