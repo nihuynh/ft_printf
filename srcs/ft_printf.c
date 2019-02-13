@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/26 19:39:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/01/10 23:29:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ static inline void flush_buff(t_data *data)
 
 static inline void init_data(t_data *data)
 {
-	int	idx;
-
-	idx = -1;
 	data->carry = 0;
 	data->idx = 0;
 	ft_bzero(&data->conf, sizeof(t_config));
@@ -80,7 +77,6 @@ static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 	d->idx += d->table[(int)format[offset]](vl, d);
 	return (offset + 1);
 }
-
 
 int	ft_printf(const char *format, ...)
 {
