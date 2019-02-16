@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/01/03 05:32:27 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/16 15:37:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,19 @@ int			form_pointer(va_list vl, t_data *data);
 
 typedef int	(*t_conv)(va_list vl, t_data *data);
 
-t_conv g_dispach[128] =
+const t_conv g_dispach[128] =
 {
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &form_percent, &f_unkn,
-	&f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&form_hexa, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&f_unkn, &f_unkn, &f_unkn, &form_character, &form_integer, &f_unkn,
-	&form_float, &f_unkn,
-	&f_unkn, &form_integer, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn,
-	&form_octal,
-	&form_pointer, &f_unkn, &f_unkn, &form_string, &f_unkn, &form_unsigned,
-	&f_unkn, &f_unkn,
-	&form_hexa, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn, &f_unkn
+	['c'] = &form_character,
+	['s'] = &form_string,
+	['p'] = &form_pointer,
+	['d'] = &form_integer,
+	['i'] = &form_integer,
+	['o'] = &form_octal,
+	['u'] = &form_unsigned,
+	['x'] = &form_hexa,
+	['X'] = &form_hexa,
+	['f'] = &form_float,
+	['%'] = &form_percent
 };
 
 #endif

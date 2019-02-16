@@ -6,13 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/01/10 23:29:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/16 15:24:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <unistd.h>
 #include <string.h>
+#include "ft_conv.h"
 #include "ft_printf.h"
 #include "ftmem.h"
 
@@ -28,17 +29,7 @@ static inline void init_data(t_data *data)
 	data->carry = 0;
 	data->idx = 0;
 	ft_bzero(&data->conf, sizeof(t_config));
-	data->table['c'] = &form_character;
-	data->table['s'] = &form_string;
-	data->table['p'] = &form_pointer;
-	data->table['d'] = &form_integer;
-	data->table['i'] = &form_integer;
-	data->table['o'] = &form_octal;
-	data->table['u'] = &form_unsigned;
-	data->table['x'] = &form_hexa;
-	data->table['X'] = &form_hexa;
-	data->table['f'] = &form_float;
-	data->table['%'] = &form_percent;
+
 }
 
 static inline int is_ending_flag(char c)
@@ -74,7 +65,7 @@ static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 		return (1);
 	if (format[offset] >= 97 && format[offset] <= 122)
 		d->conf.flags |= (FLAG_UPCASE);
-	d->idx += d->table[(int)format[offset]](vl, d);
+	d->idx += g_dispach[(int)format[offset]](vl, d);
 	return (offset + 1);
 }
 

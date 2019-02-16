@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/26 19:40:54 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/16 15:20:54 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define FLAG_SHOWSIGN	(1UL << 7)
 
 typedef struct s_data	t_data;
-typedef int (*conv_table)(va_list vl, t_data *data);
 
 typedef struct	s_config
 {
@@ -51,20 +50,19 @@ struct			s_data
 	t_config	conf;
 	char		buff[PF_BUFF];
 	char		tmp[50];
-	conv_table	table[256];
 };
 
 int				ft_itob_base(int value, int base, char *buff, int upcase);
 
-int				form_unknown(va_list vl, t_data *data);
-int				form_percent(va_list vl, t_data *data);
-int				form_integer(va_list vl, t_data *data);
-int				form_unsigned(va_list vl, t_data *data);
-int				form_octal(va_list vl, t_data *data);
-int				form_hexa(va_list vl, t_data *data);
-int				form_float(va_list vl, t_data *data);
-int				form_character(va_list vl, t_data *data);
-int				form_string(va_list vl, t_data *data);
-int				form_pointer(va_list vl, t_data *data);
+// int				form_unknown(va_list vl, t_data *data);
+// int				form_percent(va_list vl, t_data *data);
+// int				form_integer(va_list vl, t_data *data);
+// int				form_unsigned(va_list vl, t_data *data);
+// int				form_octal(va_list vl, t_data *data);
+// int				form_hexa(va_list vl, t_data *data);
+// int				form_float(va_list vl, t_data *data);
+// int				form_character(va_list vl, t_data *data);
+// int				form_string(va_list vl, t_data *data);
+// int				form_pointer(va_list vl, t_data *data);
 
 #endif
