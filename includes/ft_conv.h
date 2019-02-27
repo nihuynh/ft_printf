@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/16 15:37:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/16 15:59:10 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			form_pointer(va_list vl, t_data *data);
 
 typedef int	(*t_conv)(va_list vl, t_data *data);
 
-const t_conv g_dispach[128] =
+const t_conv g_conv[128] =
 {
 	['c'] = &form_character,
 	['s'] = &form_string,
@@ -42,6 +42,16 @@ const t_conv g_dispach[128] =
 	['X'] = &form_hexa,
 	['f'] = &form_float,
 	['%'] = &form_percent
+};
+
+const t_conv g_mod[128] =
+{
+	['#'] = &form_character,
+	['0'] = &form_string,
+	['.'] = &form_pointer,
+	['+'] = &form_integer,
+	['-'] = &form_integer,
+	[' '] = &form_integer,
 };
 
 #endif

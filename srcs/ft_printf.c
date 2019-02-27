@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/16 15:24:05 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/16 15:56:49 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static inline void init_data(t_data *data)
 	data->carry = 0;
 	data->idx = 0;
 	ft_bzero(&data->conf, sizeof(t_config));
-
 }
 
 static inline int is_ending_flag(char c)
@@ -65,7 +64,8 @@ static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 		return (1);
 	if (format[offset] >= 97 && format[offset] <= 122)
 		d->conf.flags |= (FLAG_UPCASE);
-	d->idx += g_dispach[(int)format[offset]](vl, d);
+	if (g_conv[(int)format[offset]])
+		d->idx += g_conv[(int)format[offset]](vl, d);
 	return (offset + 1);
 }
 
