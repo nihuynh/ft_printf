@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/16 15:59:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/28 17:02:08 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ const t_conv g_conv[128] =
 	['i'] = &form_integer,
 	['o'] = &form_octal,
 	['u'] = &form_unsigned,
+	['U'] = &form_unsigned,
 	['x'] = &form_hexa,
 	['X'] = &form_hexa,
 	['f'] = &form_float,
@@ -51,7 +52,7 @@ const t_conv g_mod[128] =
 	['.'] = &form_pointer,
 	['+'] = &form_integer,
 	['-'] = &form_integer,
-	[' '] = &form_integer,
+	[' '] = &form_integer
 };
 
 #endif
