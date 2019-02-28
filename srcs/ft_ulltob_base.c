@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 08:13:30 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/28 15:59:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/28 16:07:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int					ft_ulltob_base(unsigned long long value,
 
 	bstr = "0123456789abcdef";
 	idx = (value < 0 && base == 10) ? 2 : 1;
-	carry =  value;
+	carry = value;
 	if (base < 2 || base > 16)
 		return (-1);
 	while (carry /= base)
 		idx++;
-	carry =  value;
+	carry = value;
 	res = idx;
 	bf[idx] = '\0';
 	bf[0] = (value < 0 && base == 10) ? '-' : bstr[0];

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/28 15:58:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/28 16:07:02 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 #include "ft_printf.h"
 #include "ftmem.h"
 
-static inline void flush_buff(t_data *data)
+static inline void		flush_buff(t_data *data)
 {
 	write(1, &data->buff, data->idx);
 	data->carry += data->idx;
 	data->idx = 0;
 }
 
-static inline void init_data(t_data *data)
+static inline void		init_data(t_data *data)
 {
 	data->carry = 0;
 	data->idx = 0;
 	ft_bzero(&data->conf, sizeof(t_config));
 }
 
-static inline int is_ending_flag(char c)
+static inline int		is_ending_flag(char c)
 {
 	char *flags;
 
@@ -52,8 +52,7 @@ static inline int is_ending_flag(char c)
 **	return the offset to move in the format string.
 */
 
-
-static inline size_t ft_process(const char *format, t_data *d, va_list vl)
+static inline size_t	ft_process(const char *format, t_data *d, va_list vl)
 {
 	size_t	offset;
 
@@ -69,7 +68,7 @@ static inline size_t ft_process(const char *format, t_data *d, va_list vl)
 	return (offset + 1);
 }
 
-int	ft_printf(const char *format, ...)
+int						ft_printf(const char *format, ...)
 {
 	va_list		vl;
 	t_data		data;
