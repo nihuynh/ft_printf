@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2018/12/26 19:07:11 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/02/28 15:57:00 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ CFLAGS	:=	-Werror -Wall -Wextra -I includes
 OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 INC		:=	-I $(INCDIR)
 # **************************************************************************** #
+OKLOGO		:=	\033[80G\033[32m[OK]\033[0m\n
+GREP_ERR	:=	grep 'Error\|Warning' -C1 2> /dev/null || true
+# **************************************************************************** #
 all : $(NAME)
 .PHONY: all
 $(NAME) : $(OBJ)
@@ -44,6 +47,10 @@ fclean : clean
 .PHONY: fclean
 re : fclean all
 .PHONY: re
+norme:
+	norminette -R CheckForbiddenSourceHeader srcs includes | $(GREP_ERR)
+	@printf "\033[1;34m$(NAME)\033[25G\033[31mNorminette $(OKLOGO)"
+.PHONY: norme
 run: all
 	$(CC) $(CFLAGS) test.c -o UT_printf.out $(INC) $(NAME)
 	./UT_printf.out
