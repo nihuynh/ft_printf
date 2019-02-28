@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 08:13:30 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/27 15:08:18 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/02/28 15:59:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@ static inline int	ft_toupper(int c)
 	return ((c >= 97 && c <= 122)) ? c - 32 : c;
 }
 
-int					ft_ulltob_base(unsigned long long value, int base, char *bf, int upc)
+int					ft_ulltob_base(unsigned long long value,
+									int base,
+									char *bf,
+									int upc)
 {
 	char				*bstr;
 	int					idx;
