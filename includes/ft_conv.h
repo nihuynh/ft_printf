@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_conv.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/28 17:02:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/15 15:35:23 by erwepifa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			form_pointer(va_list vl, t_data *data);
 
 typedef int	(*t_conv)(va_list vl, t_data *data);
 
-const t_conv g_conv[128] =
+const t_conv g_conv[256] =
 {
 	['c'] = &form_character,
 	['s'] = &form_string,
@@ -45,7 +45,7 @@ const t_conv g_conv[128] =
 	['%'] = &form_percent
 };
 
-const t_conv g_mod[128] =
+const t_conv g_mod[256] =
 {
 	['#'] = &form_character,
 	['0'] = &form_string,

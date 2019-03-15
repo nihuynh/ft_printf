@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/12/26 19:28:51 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/15 15:50:28 by erwepifa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	weird_test()
 
 void	basic_test(void)
 {
+	/*
 	ft_printf("Just a string\n");
 	ft_printf("%s\n", "Just a string arg");
 	ft_printf("Enterlace %s\n", "string");
@@ -32,6 +33,9 @@ void	basic_test(void)
 	ft_printf("Enterlace %d\n", 5000);
 	ft_printf("%c\n", 'w');
 	ft_printf("Enterlace %c\n", 'q');
+	*/
+	ft_printf("%5%");
+	
 }
 
 int		main(void)
@@ -41,4 +45,5 @@ int		main(void)
 	while (42)
 		;
 	return (0);
+
 }
