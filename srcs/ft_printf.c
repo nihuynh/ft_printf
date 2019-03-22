@@ -6,7 +6,7 @@
 /*   By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/15 15:49:35 by erwepifa         ###   ########.fr       */
+/*   Updated: 2019/03/22 15:41:58 by erwepifa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "ft_conv.h"
 #include "ft_printf.h"
 #include "ftmem.h"
+#include "ftconvert.h"
+#include "ftctype.h"
 
 int		ft_atoi(const	char *str)
 {
@@ -89,19 +91,26 @@ static size_t				format_parser(const char *format, t_data *d)
 			d->conf.rpad = ft_atoi(&format[++offset]);
 		if (format[offset] == ' ')
 			d->conf.space = ft_atoi(&format[++offset]);
-		// '+'
-		/*
 		if (format[offset] == '+')
-			d->
-		// '0'
-		// '#'
+			d->conf.flags |= (FLAG_SHOWSIGN);
+		if (format[offset] == '0')
+			d->conf.zpad = ft_atoi(&format[++offset]); 
 		if (format[offset] == '#')
-			d->
-			*/
-		// 'l'
-		// 'h'
-
-	
+			d->conf.flags |= (FLAG_HASH);
+		if (format[offset++] == 'l')
+		{
+    		if (format[offset++] == 'l')
+       			d->conf.flags |= (FLAG_LONGLONG);
+    		else
+        		d->conf.flags |= (FLAG_LONG);
+		}
+		if (format[offset++] == 'h')
+		{
+    		if (format[offset++] == 'h')
+       			d->conf.flags |= (FLAG_HALFHALF);
+    		else
+        		d->conf.flags |= (FLAG_HALF);
+		}
 		while (ft_isdigit(format[offset]))
 			offset++;
 	}

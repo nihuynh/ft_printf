@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
+#    By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2019/02/28 15:57:00 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/22 15:30:33 by erwepifa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJDIR	:=	objs
 INCDIR	:=	includes
 # **************************************************************************** #
 CC		:=	clang
-CFLAGS	:=	-Werror -Wall -Wextra -I includes
+CFLAGS	:=	-Werror -Wall -Wextra -I includes -g
 OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 INC		:=	-I $(INCDIR)
 # **************************************************************************** #

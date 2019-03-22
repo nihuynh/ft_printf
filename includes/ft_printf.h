@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
+/*   By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/02/28 16:00:03 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/22 14:42:53 by erwepifa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define FLAG_SIZE_T	(1UL << 5)
 # define FLAG_UPCASE	(1UL << 6)
 # define FLAG_SHOWSIGN	(1UL << 7)
+# define FLAG_HASH		(1UL << 8)
 
 typedef struct s_data	t_data;
 
@@ -41,6 +42,7 @@ typedef struct	s_config
 	int		prec;
 	int		lpad;
 	int		rpad;
+	int		zpad;
 }				t_config;
 
 struct			s_data
