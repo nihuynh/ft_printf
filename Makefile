@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/23 19:44:40 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/23 20:24:33 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJDIR	:=	objs
 INCDIR	:=	includes
 # **************************************************************************** #
 CC		:=	clang
-CFLAGS	:=	-Werror -Wall -Wextra -I includes -g
+CFLAGS	:=	-Werror -Wall -Wextra -I includes -g -O2
 OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 INC		:=	-I $(INCDIR)
 # **************************************************************************** #

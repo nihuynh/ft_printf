@@ -6,19 +6,24 @@ FAILED TESTS:
   2. unix function printf
      (returned value) -->written on stdout<--
 
-# 0007
+# 0007 
   ft_printf("%5%");
   1. (    1) -->%<--
   2. (    5) -->    %<--
 
-# 0008
+# 0008 
   ft_printf("%-5%");
   1. (    1) -->%<--
   2. (    5) -->%    <--
 
+# 0012 (int)
+  ft_printf("%x", 42);
+  1. (    2) -->2A<--
+  2. (    2) -->2a<--
+
 # 0016 (int)
   ft_printf("%x", -42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (    8) -->ffffffd6<--
 
 # 0017 (int)
@@ -28,12 +33,12 @@ FAILED TESTS:
 
 # 0021 (int)
   ft_printf("%10x", 42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (   10) -->        2a<--
 
 # 0022 (int)
   ft_printf("%-10x", 42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (   10) -->2a        <--
 
 # 0023 (int)
@@ -78,13 +83,18 @@ FAILED TESTS:
 
 # 0033 (int)
   ft_printf("%010x", 542);
-  1. (    3) -->21e<--
+  1. (    3) -->21E<--
   2. (   10) -->000000021e<--
 
 # 0034 (int)
   ft_printf("%-15x", 542);
-  1. (    3) -->21e<--
+  1. (    3) -->21E<--
   2. (   15) -->21e            <--
+
+# 0035 (int)
+  ft_printf("%2x", 542);
+  1. (    3) -->21E<--
+  2. (    3) -->21e<--
 
 # 0037 (int)
   ft_printf("%5.2x", 5427);
@@ -93,7 +103,7 @@ FAILED TESTS:
 
 # 0038 (int)
   ft_printf("%#x", 42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (    4) -->0x2a<--
 
 # 0039 (int)
@@ -103,7 +113,7 @@ FAILED TESTS:
 
 # 0041 (int)
   ft_printf("%#x", 42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (    4) -->0x2a<--
 
 # 0042 (int)
@@ -113,17 +123,17 @@ FAILED TESTS:
 
 # 0043 (int)
   ft_printf("%#8x", 42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (    8) -->    0x2a<--
 
 # 0044 (int)
   ft_printf("%#08x", 42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (    8) -->0x00002a<--
 
 # 0045 (int)
   ft_printf("%#-08x", 42);
-  1. (    2) -->2a<--
+  1. (    2) -->2A<--
   2. (    8) -->0x2a    <--
 
 # 0046 (int)
@@ -588,7 +598,7 @@ FAILED TESTS:
 
 # 0197 (unsigned int)
   ft_printf("@moulitest: %.5u", 42);
-  1. (   13) -->@moulitest: ^@<--
+  1. (    0) --><--
   2. (   17) -->@moulitest: 00042<--
 
 --------------
@@ -606,7 +616,7 @@ SUCCESS TESTS:
    9.      ft_printf("%.0%");                            -> "%"
   10.      ft_printf("%%", "test");                      -> "%"
   11.      ft_printf("%   %", "test");                   -> "%"
-  12.      ft_printf("%x", 42);                          -> "2a"
+  12. FAIL ft_printf("%x", 42);                          -> "2a"
   13.      ft_printf("%X", 42);                          -> "2A"
   14.      ft_printf("%x", 0);                           -> "0"
   15.      ft_printf("%X", 0);                           -> "0"
@@ -629,7 +639,7 @@ SUCCESS TESTS:
   32. FAIL ft_printf("%llx", 9223372036854775808);       -> "7fffffffffffffff"
   33. FAIL ft_printf("%010x", 542);                      -> "000000021e"
   34. FAIL ft_printf("%-15x", 542);                      -> "21e            "
-  35.      ft_printf("%2x", 542);                        -> "21e"
+  35. FAIL ft_printf("%2x", 542);                        -> "21e"
   36.      ft_printf("%.2x", 5427);                      -> "1533"
   37. FAIL ft_printf("%5.2x", 5427);                     -> " 1533"
   38. FAIL ft_printf("%#x", 42);                         -> "0x2a"

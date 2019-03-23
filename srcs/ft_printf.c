@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/23 19:42:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/23 20:45:30 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,31 @@ size_t				format_parser(const char *format, t_data *d)
 	{
 		if (ft_isdigit(format[offset]))
 			d->conf.lpad = ft_atoi(&format[offset]);
-		if (format[offset] == '-')
+		else if (format[offset] == '-')
 			d->conf.rpad = ft_atoi(&format[++offset]);
-		if (format[offset] == ' ')
+		else if (format[offset] == ' ')
 			d->conf.space = ft_atoi(&format[++offset]);
-		if (format[offset] == '+')
+		else if (format[offset] == '+')
 			d->conf.flags |= (FLAG_SHOWSIGN);
-		if (format[offset] == '0')
+		else if (format[offset] == '0')
 			d->conf.zpad = ft_atoi(&format[++offset]);
-		if (format[offset] == '#')
+		else if (format[offset] == '#')
 			d->conf.flags |= (FLAG_HASH);
-		if (format[offset] == 'l')
+		else if (format[offset] == 'l')
 		{
     		if (format[++offset] == 'l')
-       			d->conf.flags |= (FLAG_LONGLONG);
+       			d->conf.flags |= (FLAG_LONGLONG) && offset++;
     		else
         		d->conf.flags |= (FLAG_LONG);
 		}
-		if (format[offset] == 'h')
+		else if (format[offset] == 'h')
 		{
     		if (format[++offset] == 'h')
-       			d->conf.flags |= (FLAG_HALFHALF);
+       			d->conf.flags |= (FLAG_HALFHALF) && offset++;
     		else
         		d->conf.flags |= (FLAG_HALF);
 		}
-		while (ft_isdigit(format[offset]) || format[offset] == 'l' || format[offset] == 'h')
+		while (ft_isdigit(format[offset]))
 			offset++;
 	}
 	if (format[offset] >= 97 && format[offset] <= 122)
