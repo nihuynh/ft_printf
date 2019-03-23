@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_conv.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/15 15:35:23 by erwepifa         ###   ########.fr       */
+/*   Updated: 2019/03/23 20:06:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,17 @@ const t_conv g_conv[256] =
 
 const t_conv g_mod[256] =
 {
-	['#'] = &form_character,
-	['0'] = &form_string,
-	['.'] = &form_pointer,
-	['+'] = &form_integer,
-	['-'] = &form_integer,
-	[' '] = &form_integer
+	['#'] = &f_unkn,
+	['0'] = &f_unkn,
+	['.'] = &f_unkn,
+	['+'] = &f_unkn,
+	['-'] = &f_unkn,
+	[' '] = &f_unkn
+	['0'..'9'] = &f_unkn,
+	['h'] = &f_unkn,
+	['H'] = &f_unkn,
+	['l'] = &f_unkn,
+	['L'] = &f_unkn
 };
 
 #endif

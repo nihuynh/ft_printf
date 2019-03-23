@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   form_percent.c                                     :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/26 18:21:08 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/23 19:57:59 by nihuynh          ###   ########.fr       */
+/*   Created: 2018/03/30 08:10:27 by nihuynh           #+#    #+#             */
+/*   Updated: 2018/03/30 08:10:27 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "ft_printf.h"
-#include "ftmem.h"
-
-int		form_percent(va_list vl, t_data *data)
+int		ft_isblank(int c)
 {
-	(void)vl;
-	ft_memset(&data->buff[data->idx], ' ', data->conf.rpad + data->conf.lpad + 1);
-	data->buff[data->idx + data->conf.lpad] = '%';
-	return (1 + data->conf.lpad + data->conf.rpad);
+	return (c == '\t' || c == ' ');
 }

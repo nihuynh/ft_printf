@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+         #
+#    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/22 15:30:33 by erwepifa         ###   ########.fr        #
+#    Updated: 2019/03/23 19:44:40 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ SRC		:=	ft_printf.c ft_itob_base.c
 SRC		+=	form_unknown.c form_percent.c form_integer.c form_unsigned.c\
 			form_octal.c form_hexa.c form_float.c form_character.c\
 			form_string.c form_pointer.c
-SRC		+=	ft_bzero.c ft_memcpy.c ft_strlcpy.c\
-			ft_strlen.c
+SRC		+=	ft_bzero.c ft_memcpy.c ft_strlcpy.c ft_memset.c ft_isspace.c\
+			ft_strlen.c ft_atoi.c ft_isdigit.c ft_isblank.c
 # directories :
 SRCDIR	:=	srcs
 OBJDIR	:=	objs
@@ -52,6 +52,6 @@ norme:
 	@printf "\033[1;34m$(NAME)\033[25G\033[31mNorminette $(OKLOGO)"
 .PHONY: norme
 run: all
-	$(CC) $(CFLAGS) test.c -o UT_printf.out $(INC) $(NAME)
-	./UT_printf.out
+	@$(CC) $(CFLAGS) test.c -o UT_printf.out $(INC) $(NAME)
+	@./UT_printf.out
 .PHONY: run

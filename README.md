@@ -1,15 +1,5 @@
 # ft_printf
-	['c'] = &form_character,
-	['s'] = &form_string,
-	['p'] = &form_pointer,
-	['d'] = &form_integer,
-	['i'] = &form_integer,
-	['o'] = &form_octal,
-	['u'] = &form_unsigned,
-	['x'] = &form_hexa,
-	['X'] = &form_hexa,
-	['f'] = &form_float,
-	['%'] = &form_percent
+Basic test = 
 
 	Modifier          d, i           o, u, x, X
 	hh                signed char    unsigned char
