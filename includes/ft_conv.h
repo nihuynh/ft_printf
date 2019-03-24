@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/23 20:28:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/23 21:24:07 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,19 @@ const t_conv g_conv[256] =
 	['x'] = &form_hexa,
 	['X'] = &form_hexa,
 	['f'] = &form_float,
-	['%'] = &form_percent
+	['F'] = &form_float,
+	['%'] = &form_percent,
+	['D'] = &f_unkn,
+	['O'] = &f_unkn,
+	['e'] = &f_unkn,
+	['E'] = &f_unkn,
+	['g'] = &f_unkn,
+	['G'] = &f_unkn,
+	['a'] = &f_unkn,
+	['A'] = &f_unkn,
+	['C'] = &f_unkn,
+	['S'] = &f_unkn,
+	['n'] = &f_unkn
 };
 
 const t_conv g_mod[256] =

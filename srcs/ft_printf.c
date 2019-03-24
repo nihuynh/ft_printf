@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/23 20:45:30 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 15:20:52 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static inline void		init_data(t_data *data)
 	data->idx = 0;
 }
 
-static inline int		is_ending_flag(char c)
+int		is_ending_flag(char c)
 {
 	char *flags;
 
@@ -52,34 +52,35 @@ size_t				format_parser(const char *format, t_data *d)
 	size_t offset;
 
 	offset = 1;
-	while (format[offset] && !is_ending_flag(format[offset]))
+	while (format[offset] && !(g_conv[(int)format[offset]]) && (g_mod[(int)format[offset]]))
 	{
 		if (ft_isdigit(format[offset]))
 			d->conf.lpad = ft_atoi(&format[offset]);
 		else if (format[offset] == '-')
 			d->conf.rpad = ft_atoi(&format[++offset]);
 		else if (format[offset] == ' ')
-			d->conf.space = ft_atoi(&format[++offset]);
+			d->conf.space = ft_atoi(&format[offset]);
 		else if (format[offset] == '+')
 			d->conf.flags |= (FLAG_SHOWSIGN);
 		else if (format[offset] == '0')
-			d->conf.zpad = ft_atoi(&format[++offset]);
+			d->conf.zpad = ft_atoi(&format[offset]);
 		else if (format[offset] == '#')
 			d->conf.flags |= (FLAG_HASH);
 		else if (format[offset] == 'l')
 		{
-    		if (format[++offset] == 'l')
+    		if (format[offset] == 'l')
        			d->conf.flags |= (FLAG_LONGLONG) && offset++;
     		else
         		d->conf.flags |= (FLAG_LONG);
 		}
 		else if (format[offset] == 'h')
 		{
-    		if (format[++offset] == 'h')
+    		if (format[offset] == 'h')
        			d->conf.flags |= (FLAG_HALFHALF) && offset++;
     		else
         		d->conf.flags |= (FLAG_HALF);
 		}
+		offset++;
 		while (ft_isdigit(format[offset]))
 			offset++;
 	}
@@ -103,7 +104,7 @@ static inline size_t	ft_process(const char *format, t_data *d, va_list vl)
 	offset = 1;
 	ft_bzero(&d->conf, sizeof(t_config));
 	offset = format_parser(format, d);
-	// while (format[offset] && !is_ending_flag(format[offset]))
+	// while (format[offset] && (g_conv[(int)format[offset]] == NULL))
 	// 	offset++;
 	if (format[offset] == '\0')
 		return (1);

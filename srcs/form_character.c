@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 18:20:50 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/23 19:56:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 15:01:50 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 
 int		form_character(va_list vl, t_data *data)
 {
-	ft_memset(&data->buff[data->idx], ' ', data->conf.rpad + data->conf.lpad + 1);
-	data->buff[data->idx + data->conf.lpad] = (char)va_arg(vl, int);
-	return (1 + data->conf.lpad + data->conf.rpad);
+	if (data->conf.lpad)
+	{
+		ft_memset(&data->buff[data->idx], ' ', data->conf.lpad--);
+		data->idx += data->conf.lpad;
+	}
+	data->buff[data->idx] = (char)va_arg(vl, int);
+	if (data->conf.rpad)
+		ft_memset(&data->buff[data->idx + 1], ' ', data->conf.rpad--);
+	return (1 + data->conf.rpad);
 }
