@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/24 16:12:43 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/24 16:55:57 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ INCDIR	:=	includes
 # **************************************************************************** #
 CC		:=	clang
 CFLAGS	:=	-Werror -Wall -Wextra -I includes -g -O2 -flto
+CFLAGS	+=	-Wstrict-aliasing -pedantic -Wunreachable-code
 OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+DEP		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.d))
 INC		:=	-I $(INCDIR)
 # **************************************************************************** #
 OKLOGO		:=	\033[80G\033[32m[OK]\033[0m\n
@@ -34,11 +36,13 @@ all : $(NAME)
 .PHONY: all
 $(NAME) : $(OBJ)
 	libtool -static -o $@ $(OBJ) && ranlib $@
+-include $(DEP)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir $(OBJDIR) 2> /dev/null || true
-	$(CC) $(CFLAGS) -c -o $@ $< $(INC)
+	$(CC) $(CFLAGS) -c -MMD -MP -o $@ $< $(INC)
 clean :
 	rm -f $(OBJ)
+	rm -f $(DEP)
 	rm -f UT_printf.out
 	rmdir $(OBJDIR) 2> /dev/null || true
 .PHONY: clean
@@ -56,7 +60,7 @@ run: all
 	@./UT_printf.out
 .PHONY: run
 curqui: all
-	@rm -rf ../curqui_test/libftprintf.a && cp libftprintf.a ../curqui_test 
+	@rm -rf ../curqui_test/libftprintf.a && cp libftprintf.a ../curqui_test
 	@make -C ../curqui_test
 	@-./../curqui_test/ft_printf_tests
 .PHONY: curqui

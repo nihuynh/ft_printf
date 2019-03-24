@@ -1,5 +1,8 @@
 # ft_printf
-Basic test = 
+Basic test	=	111/197		Fails
+undefined	=	32/40		Fails
+moulitest	=	41/48		Fails
+Curqui		=	64/233		Pass
 
 	Modifier          d, i           o, u, x, X
 	hh                signed char    unsigned char

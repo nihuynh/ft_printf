@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 16:04:57 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:57:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,19 @@ void	basic_test(void)
 	PRINTF_TEST("%-5c", 'c');
 }
 
-void	timeout_test(void)
+void	wip_test(void)
 {
-	PRINTF_TEST("%.12d", 1144);
+	// PRINTF_TEST("%hd", 32767);
+	// PRINTF_TEST("%hd", −32768);
+	// PRINTF_TEST("%ld", 2147483647);
+	// PRINTF_TEST("%ld", -2147483648);
 }
 
 int        main(void)
 {
     // weird_test();
     basic_test();
-	timeout_test();
+	wip_test();
 	while (0)
         ;
     return (0);

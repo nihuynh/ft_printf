@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 15:28:42 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:41:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ size_t				format_parser(const char *format, t_data *d)
 	size_t offset;
 
 	offset = 1;
-	while (format[offset] && !(g_conv[(int)format[offset]]) && (g_mod[(int)format[offset]]))
+	while (format[offset] && (g_mod[(int)format[offset]]))
 	{
 		if (ft_isdigit(format[offset]))
 			d->conf.lpad = ft_atoi(&format[offset]);
@@ -69,19 +69,9 @@ size_t				format_parser(const char *format, t_data *d)
 		else if (format[offset] == '#')
 			d->conf.flags |= (FLAG_HASH);
 		else if (format[offset] == 'l')
-		{
-    		if (format[offset] == 'l')
-       			d->conf.flags |= (FLAG_LONGLONG) && offset++;
-    		else
-        		d->conf.flags |= (FLAG_LONG);
-		}
+			d->conf.flags |= (format[++offset] == 'l') ? (FLAG_LONGLONG) : (FLAG_LONG);
 		else if (format[offset] == 'h')
-		{
-    		if (format[offset] == 'h')
-       			d->conf.flags |= (FLAG_HALFHALF) && offset++;
-    		else
-        		d->conf.flags |= (FLAG_HALF);
-		}
+			d->conf.flags |= (format[++offset] == 'h') ? (FLAG_HALFHALF) : (FLAG_HALF);
 		offset++;
 		while (ft_isdigit(format[offset]))
 			offset++;

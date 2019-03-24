@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/23 21:24:07 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:57:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ int			form_pointer(va_list vl, t_data *data);
 
 typedef int	(*t_conv)(va_list vl, t_data *data);
 
-const t_conv g_conv[256] =
+static const t_conv g_conv[256] =
 {
 	['c'] = &form_character,
 	['s'] = &form_string,
 	['p'] = &form_pointer,
 	['d'] = &form_integer,
+	['D'] = &form_integer,
 	['i'] = &form_integer,
 	['o'] = &form_octal,
 	['u'] = &form_unsigned,
@@ -44,7 +45,6 @@ const t_conv g_conv[256] =
 	['f'] = &form_float,
 	['F'] = &form_float,
 	['%'] = &form_percent,
-	['D'] = &f_unkn,
 	['O'] = &f_unkn,
 	['e'] = &f_unkn,
 	['E'] = &f_unkn,
@@ -57,7 +57,7 @@ const t_conv g_conv[256] =
 	['n'] = &f_unkn
 };
 
-const t_conv g_mod[256] =
+static const t_conv g_mod[256] =
 {
 	['#'] = &f_unkn,
 	['0'] = &f_unkn,
@@ -77,7 +77,12 @@ const t_conv g_mod[256] =
 	['h'] = &f_unkn,
 	['H'] = &f_unkn,
 	['l'] = &f_unkn,
-	['L'] = &f_unkn
+	['L'] = &f_unkn,
+	['j'] = &f_unkn,
+	['J'] = &f_unkn,
+	['z'] = &f_unkn,
+	['Z'] = &f_unkn,
+	['*'] = &f_unkn
 };
 
 #endif
