@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 15:50:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:04:57 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,16 @@ void	basic_test(void)
 	PRINTF_TEST("%-5c", 'c');
 }
 
+void	timeout_test(void)
+{
+	PRINTF_TEST("%.12d", 1144);
+}
+
 int        main(void)
 {
     // weird_test();
     basic_test();
-	ft_printf("%5%$\n");
-	printf("%5%$\n");
-    ft_printf("%-5%$\n");
-    printf("%-5%$\n");
+	timeout_test();
 	while (0)
         ;
     return (0);

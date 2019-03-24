@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/23 21:29:13 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 16:01:17 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,30 @@
 
 typedef struct s_data	t_data;
 
-typedef struct	s_config
+typedef struct		s_config
 {
-	char	flags;
-	int		space;
-	int		width;
-	int		prec;
-	int		lpad;
-	int		rpad;
-	int		zpad;
-}				t_config;
+	char			conv;
+	int				flags;
+	unsigned int	space;
+	unsigned int	width;
+	unsigned int	prec;
+	unsigned int	lpad;
+	unsigned int	rpad;
+	unsigned int	zpad;
+}					t_config;
 
-struct			s_data
+struct				s_data
 {
-	size_t		idx;
-	size_t		carry;
-	t_config	conf;
-	char		buff[PF_BUFF];
-	char		tmp[50];
+	size_t			idx;
+	size_t			carry;
+	t_config		conf;
+	char			buff[PF_BUFF];
+	char			tmp[50];
 };
 
-int				ft_itob_base(int value, int base, char *buff, int upcase);
+int					ft_itob_base(int value, int base, char *buff, int upcase);
+int					conv(char *bf, long long value, t_config *conf);
+int					uconv(char *bf, unsigned long long value, t_config *conf);
+
 
 #endif
