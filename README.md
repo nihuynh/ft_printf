@@ -39,6 +39,3 @@ mod_half			/* for 'h' */
 mod_halfhalf
 mod_long			/* for 'l' */
 mod_longlong
-
-	// while (++idx < 256)
-	// 	data->table[idx] = &form_unknown;

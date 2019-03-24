@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/24 16:55:57 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/24 17:01:01 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ run: all
 	@$(CC) $(CFLAGS) test.c -o UT_printf.out $(INC) $(NAME)
 	@./UT_printf.out
 .PHONY: run
-curqui: all
+curqui: re
 	@rm -rf ../curqui_test/libftprintf.a && cp libftprintf.a ../curqui_test
 	@make -C ../curqui_test
 	@-./../curqui_test/ft_printf_tests
