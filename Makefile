@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2019/03/24 15:07:24 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/03/24 15:50:35 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,3 +55,7 @@ run: all
 	@$(CC) $(CFLAGS) test.c -o UT_printf.out $(INC) $(NAME)
 	@./UT_printf.out
 .PHONY: run
+curqui: all
+	@cp $(NAME) ../curqui_test
+	@./../curqui_test/ft_printf_tests
+.PHONY: curqui

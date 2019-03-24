@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 14:50:23 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/03/24 15:50:09 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	ft_printf(const char *format, ...);
 
 int	weird_test()
 {
-	printf("%20.15d\n", 54321);
-	printf("%-10d\n", 3);
-	printf("% d\n", 3);
-	printf("%+d\n", 3);
-	printf("%010d\n", 1);
+	PRINTF_TEST("%20.15d\n", 54321);
+	PRINTF_TEST("%-10d\n", 3);
+	PRINTF_TEST("% d\n", 3);
+	PRINTF_TEST("%+d\n", 3);
+	PRINTF_TEST("%010d\n", 1);
 	return (0);
 }
 
