@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 16:57:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:55:16 by erwepifa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdarg.h>
 # include "ft_printf.h"
+
+char		*ft_cut(char *str, int n);
 
 int			f_unkn(va_list vl, t_data *data);
 int			form_percent(va_list vl, t_data *data);
