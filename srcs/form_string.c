@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 18:21:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/03 13:54:57 by erwepifa         ###   ########.fr       */
+/*   Updated: 2019/04/03 16:38:13 by erwepifa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 char		*ft_cut(char *str, int n)
 {
 	int		i;
-	int		length;
+	int		len;
 	char	*new;
 
-	length = ft_strlen(str);
-	if (n >= length)
+	len = ft_strlen(str);
+	if (n >= len)
 		return ("");
-	new = ft_strnew(length - n);
+	new = ft_strnew(len - n);
 	i = 0;
-	while (i < (length - n))
+	while (i < (len - n))
 	new[i++] = *str++;
 		return (new);
 }
@@ -49,10 +49,11 @@ int        form_string(va_list vl, t_data *data)
 			data->idx += data->conf.lpad - tmplen;
 		}
 		res = ft_strlcpy(&data->buff[data->idx], tmp, PF_BUFF - data->idx);
-		if (data->conf.rpad > res)
+		if (data->conf.rpad > tmplen)
 		{
-			ft_memset(&data->buff[data->idx + res], ' ', data->conf.rpad - res);
-			return (data->conf.rpad);
+			ft_memset(&data->buff[data->idx + res], ' ', data->conf.rpad - tmplen);
+			data->idx += data->conf.rpad - tmplen;
+			//return (data->conf.rpad);
     }
     return (res);
 }
