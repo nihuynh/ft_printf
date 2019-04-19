@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 18:21:08 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 15:03:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/19 16:22:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@
 int		form_percent(va_list vl, t_data *data)
 {
 	(void)vl;
-	if (data->conf.lpad)
+	if (data->conf.width)
 	{
-		ft_memset(&data->buff[data->idx], ' ', data->conf.lpad--);
-		data->idx += data->conf.lpad;
+		ft_memset(&data->buff[data->idx], ' ', data->conf.width--);
+		data->idx += data->conf.width;
+	}
+	if (data->conf.zpad)
+	{
+		ft_memset(&data->buff[data->idx], '0', data->conf.zpad--);
+		data->idx += data->conf.zpad;
 	}
 	data->buff[data->idx] = '%';
 	if (data->conf.rpad)

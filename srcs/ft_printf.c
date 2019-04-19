@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 16:41:59 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/19 16:21:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,6 @@ static inline void		init_data(t_data *data)
 	data->idx = 0;
 }
 
-int		is_ending_flag(char c)
-{
-	char *flags;
-
-	flags = END_FLAG;
-	while (*flags)
-	{
-		if (*flags == c)
-			return (1);
-		flags++;
-	}
-	return (0);
-}
-
 size_t				format_parser(const char *format, t_data *d)
 {
 	size_t offset;
@@ -54,30 +40,37 @@ size_t				format_parser(const char *format, t_data *d)
 	offset = 1;
 	while (format[offset] && (g_mod[(int)format[offset]]))
 	{
-		if (ft_isdigit(format[offset]))
-			d->conf.lpad = ft_atoi(&format[offset]);
+		if (format[offset] == '0')
+			d->conf.zpad = ft_atoi(&format[offset]);
+		else if (ft_isdigit(format[offset]))
+			d->conf.width = ft_atoi(&format[offset]);
 		else if (format[offset] == '-')
-			d->conf.rpad = ft_atoi(&format[++offset]);
+		{
+			while (format[offset] == '-')
+				offset++;
+			d->conf.rpad = ft_atoi(&format[offset]);
+		}
 		else if (format[offset] == ' ')
 			d->conf.space = ft_atoi(&format[offset]);
 		else if (format[offset] == '+')
 			d->conf.flags |= (FLAG_SHOWSIGN);
-		else if (format[offset] == '0')
-			d->conf.zpad = ft_atoi(&format[offset]);
 		else if (format[offset] == '.')
 			d->conf.prec = ft_atoi(&format[offset]);
 		else if (format[offset] == '#')
 			d->conf.flags |= (FLAG_HASH);
 		else if (format[offset] == 'l')
-			d->conf.flags |= (format[++offset] == 'l') ? (FLAG_LONGLONG) : (FLAG_LONG);
+			d->conf.flags |= (format[++offset] == 'l') ? (FLAG_LL) : (FLAG_L);
 		else if (format[offset] == 'h')
-			d->conf.flags |= (format[++offset] == 'h') ? (FLAG_HALFHALF) : (FLAG_HALF);
+			d->conf.flags |= (format[++offset] == 'h') ? (FLAG_HH) : (FLAG_H);
+		if ((g_conv[(int)format[offset]]))
+			break;
 		offset++;
 		while (ft_isdigit(format[offset]))
 			offset++;
 	}
 	if (format[offset] >= 97 && format[offset] <= 122)
 		d->conf.flags |= (FLAG_UPCASE);
+	d->conf.conv = format[offset];
 	return (offset);
 }
 

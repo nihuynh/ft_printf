@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 18:21:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/19 13:33:06 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/19 16:09:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int        form_string(va_list vl, t_data *data)
 		tmplen = ft_strlen(tmp);
 		if (data->conf.prec < tmplen)
 			new = ft_cut(new, tmplen - data->conf.prec);
-		if (data->conf.lpad > tmplen)
+		if (data->conf.width > tmplen)
 		{
-			ft_memset(&data->buff[data->idx], ' ', data->conf.lpad - tmplen);
-			data->idx += data->conf.lpad - tmplen;
+			ft_memset(&data->buff[data->idx], ' ', data->conf.width - tmplen);
+			data->idx += data->conf.width - tmplen;
 		}
 		res = ft_strlcpy(&data->buff[data->idx], tmp, PF_BUFF - data->idx);
 		if (data->conf.rpad > tmplen)

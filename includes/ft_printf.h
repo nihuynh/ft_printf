@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/03/24 16:01:17 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/19 16:23:18 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 # define PF_BUFF	2048
 # define END_FLAG	"cspdiouxXf%"
 
-# define FLAG_HALF		(1UL)
-# define FLAG_HALFHALF	(1UL << 1)
-# define FLAG_LONG		(1UL << 2)
-# define FLAG_LONGLONG	(1UL << 3)
+# define FLAG_H			(1UL)
+# define FLAG_HH		(1UL << 1)
+# define FLAG_L			(1UL << 2)
+# define FLAG_LL		(1UL << 3)
 # define FLAG_INTMAX	(1UL << 4)
 # define FLAG_SIZE_T	(1UL << 5)
 # define FLAG_UPCASE	(1UL << 6)
@@ -36,9 +36,8 @@ typedef struct		s_config
 	char			conv;
 	int				flags;
 	unsigned int	space;
-	unsigned int	width;
 	unsigned int	prec;
-	unsigned int	lpad;
+	unsigned int	width;
 	unsigned int	rpad;
 	unsigned int	zpad;
 }					t_config;
