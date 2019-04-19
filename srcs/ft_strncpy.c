@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erwepifa <erwepifa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 12:37:31 by erwepifa          #+#    #+#             */
-/*   Updated: 2019/04/03 13:01:55 by erwepifa         ###   ########.fr       */
+/*   Created: 2018/03/30 10:24:06 by nihuynh           #+#    #+#             */
+/*   Updated: 2018/03/30 10:24:06 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strnew(size_t size)
+char	*ft_strncpy(char *dst, char const *src, size_t n)
 {
-	char	*str;
-	size_t	i;
+	char *pdst;
 
-	i = 0;
-	str = NULL;
-	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	ft_bzero(str, size + 1);
-	return (str);
+	pdst = dst;
+	while (*src && n > 0)
+	{
+		*pdst++ = *src++;
+		n--;
+	}
+	ft_bzero(pdst, n);
+	return (dst);
 }

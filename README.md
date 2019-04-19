@@ -2,7 +2,23 @@
 Basic test	=	111/197		Fails
 undefined	=	32/40		Fails
 moulitest	=	41/48		Fails
-Curqui		=	64/233		Pass
+Curqui		=	82/233		Pass
+
+       Basic tests          2/2
+       Conv d-i-D           20/40
+       Conv u-U             0/26
+       Conv o-O             13/34
+       Conv x-X             13/39
+       Conv c               8/8
+       Conv C               1/22
+       Conv s               11/15
+       Conv S               2/23
+       Conv p               0/7
+       Percent              12/12
+       Mixed tests          0/5
+       ----------------------------
+       TOTAL                82/233
+       ----------------------------
 
 	Modifier          d, i           o, u, x, X
 	hh                signed char    unsigned char

@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/19 16:21:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/19 17:06:01 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "ftctype.h"
 
 
-static inline void		flush_buff(t_data *data)
+void					flush_buff(t_data *data)
 {
 	write(1, &data->buff, data->idx);
 	data->carry += data->idx;
@@ -55,7 +55,7 @@ size_t				format_parser(const char *format, t_data *d)
 		else if (format[offset] == '+')
 			d->conf.flags |= (FLAG_SHOWSIGN);
 		else if (format[offset] == '.')
-			d->conf.prec = ft_atoi(&format[offset]);
+			d->conf.prec = ft_atoi(&format[++offset]);
 		else if (format[offset] == '#')
 			d->conf.flags |= (FLAG_HASH);
 		else if (format[offset] == 'l')
