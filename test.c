@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/03 16:19:10 by erwepifa         ###   ########.fr       */
+/*   Updated: 2019/04/19 13:35:29 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define PRINTF_TEST(fmt, ...) do { 											\
 	int res = ft_printf(fmt, __VA_ARGS__);									\
-	printf("$\033[50Gres = %d\n", res);										\
+	printf("$\033[50Gres = %d\033[70Gformat : %s\n", res, fmt);				\
 	int epres = printf(fmt, __VA_ARGS__);									\
 	printf("$\033[40G(printf)\033[50Gres = %d", epres);						\
 	printf("\033[70GReturn value is %s\n", (res == epres) ? "good" : "bad");\
