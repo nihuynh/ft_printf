@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/19 17:05:33 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/21 20:25:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	wip_test(void)
 	int var;
 
 	var = 42;
-	// s
-	PRINTF_TEST("%.5s", "coco et titi");
-	PRINTF_TEST("%15.3s", "Hello");
-	PRINTF_TEST("%-15s", "Hello");
 	// p
 	PRINTF_TEST("%p", (void*) &var);
+	PRINTF_TEST("%20p", (void*) &var);
+	PRINTF_TEST("%-25p", (void*) &var);
+	PRINTF_TEST("%2p", (void*) &var);
+	PRINTF_TEST("%p", NULL);
 }
 
 int        main(void)
