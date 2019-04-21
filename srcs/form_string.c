@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 18:21:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/19 17:03:09 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/21 18:24:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int        form_string(va_list vl, t_data *data)
 	if (str == NULL)
 		str = "(null)";
 	lenstr = ft_strlen(str);
-	if ((data->conf.prec > 0) && (data->conf.prec < lenstr))
-		lenstr = data->conf.prec;
+	if (data->conf.prec && ((data->conf.prec - 1) < lenstr))
+		lenstr = data->conf.prec - 1;
 	if (lenstr > PF_BUFF - data->idx)
 		flush_buff(data);
 	if (data->conf.width > lenstr)

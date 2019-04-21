@@ -1,8 +1,8 @@
 # ft_printf
-Basic test	=	111/197		Fails
-undefined	=	32/40		Fails
-moulitest	=	41/48		Fails
-Curqui		=	82/233		Pass
+Basic test	=	94/197		Fails
+undefined	=	29/40		Fails
+moulitest	=	40/48		Fails
+Curqui		=	88/233		Pass
 
        Basic tests          2/2
        Conv d-i-D           20/40
@@ -11,13 +11,13 @@ Curqui		=	82/233		Pass
        Conv x-X             13/39
        Conv c               8/8
        Conv C               1/22
-       Conv s               11/15
-       Conv S               2/23
+       Conv s               15/15
+       Conv S               4/23
        Conv p               0/7
        Percent              12/12
        Mixed tests          0/5
        ----------------------------
-       TOTAL                82/233
+       TOTAL                88/233
        ----------------------------
 
 	Modifier          d, i           o, u, x, X
