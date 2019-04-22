@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/21 18:24:56 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/22 12:38:44 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t				format_parser(const char *format, t_data *d)
 			d->conf.rpad = ft_atoi(&format[offset]);
 		}
 		else if (format[offset] == ' ')
-			d->conf.space = ft_atoi(&format[offset]);
+			d->conf.space = ft_atoi(&format[offset]) + 1;
 		else if (format[offset] == '+')
 			d->conf.flags |= (FLAG_SHOWSIGN);
 		else if (format[offset] == '.')
