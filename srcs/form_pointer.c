@@ -6,11 +6,12 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 18:21:11 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/21 20:29:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/04/23 18:10:34 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
+#include <stdint.h>
 #include "ftstring.h"
 #include "ft_printf.h"
 #include "ftmem.h"
