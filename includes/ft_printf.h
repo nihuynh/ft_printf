@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:32:54 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/21 20:21:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/01 11:45:26 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ struct				s_data
 void				flush_buff(t_data *data);
 int					ft_itob_base(int value, int base, char *buff, int upcase);
 int					ft_lltob_base(long long value, int base, char *bf, int upc);
-int					conv(char *bf, long long value, t_config *conf);
-int					uconv(char *bf, unsigned long long value, t_config *conf);
+int					ft_ulltob_base(unsigned long long value, int base, char *bf,
+	int upc);
 
 
 #endif

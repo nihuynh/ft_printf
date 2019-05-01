@@ -6,7 +6,7 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2019/04/21 20:20:52 by nihuynh          ###   ########.fr        #
+#    Updated: 2019/05/01 11:44:42 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	:=	libftprintf.a
 SRC		:=	ft_printf.c ft_itob_base.c ft_lltob_base.c
 SRC		+=	form_unknown.c form_percent.c form_integer.c form_unsigned.c\
 			form_octal.c form_hexa.c form_float.c form_character.c\
-			form_string.c form_pointer.c conv.c
+			form_string.c form_pointer.c
 SRC		+=	ft_bzero.c ft_memcpy.c ft_strlcpy.c ft_memset.c ft_isspace.c\
 			ft_strlen.c ft_atoi.c ft_isdigit.c ft_isblank.c ft_strncpy.c
 # directories :

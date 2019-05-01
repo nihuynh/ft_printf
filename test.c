@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/22 12:43:08 by nihuynh          ###   ########.fr       */
+/*   Updated: 2019/05/01 12:26:20 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ void	wip_test(void)
 
 	var = 42;
 	// diD
-	PRINTF_TEST("%.12d", 1144);
-	PRINTF_TEST("%.5d", -421);
-	PRINTF_TEST("%.0i", 0);
-	PRINTF_TEST("%.d", 0);
+	PRINTF_TEST("%+12.5d", 140);
+	PRINTF_TEST("%00+10.4d", 0);
+	PRINTF_TEST("%20.ld et %.4hhi !", 0x11ffaa147, (signed char)-8);
+	PRINTF_TEST("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24, (short)-2345);
+	PRINTF_TEST("toto%.0d et %+.i et  %   .0D !!!", 0, 0, 0);
 }
 
 int        main(void)
