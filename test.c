@@ -17,7 +17,7 @@
 	printf("$\033[50Gres = %d\033[70Gformat : %s\n", res, fmt);				\
 	int epres = printf(fmt, __VA_ARGS__);									\
 	printf("$\033[40G(printf)\033[50Gres = %d", epres);						\
-	printf("\033[70GReturn value is %s\n", (res == epres) ? "good" : "bad");\
+	printf("\033[70GReturn value is %s\n", (res == epres) ? "\033[0;32mgood\033[0m" : "\033[;31mbad\033[0m");\
 } while (0)
 int	ft_printf(const char *format, ...);
 
@@ -56,11 +56,22 @@ void	wip_test(void)
 	PRINTF_TEST("toto%.0d et %+.i et  %   .0D !!!", 0, 0, 0);
 }
 
+void	segv_test(void)
+{
+	int var;
+
+	var = 42;
+	// diD
+	PRINTF_TEST("%5i", 52625);
+	// PRINTF_TEST("%00+10.4d", 0);s
+}
+
 int        main(void)
 {
     // weird_test();
     // basic_test();
 	wip_test();
+	segv_test();
 	while (0)
         ;
     return (0);

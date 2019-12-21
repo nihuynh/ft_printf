@@ -19,7 +19,12 @@
 #include "ftconvert.h"
 #include "ftctype.h"
 
-
+/*
+**	Write the data of the buffer into stdout.
+**	Place the write char count into the carry
+**	to handle the return value of printf.
+**	Reset the idx value so the next data is at the start of the buffer.
+*/
 void					flush_buff(t_data *data)
 {
 	write(1, &data->buff, data->idx);
@@ -33,6 +38,12 @@ static inline void		init_data(t_data *data)
 	data->idx = 0;
 }
 
+/*
+**	Read the format between the % and the conversion char.
+**	It built the config.
+**	Return the offset between the % abd the conv char
+**	TODO: Make uses the g_mod to avoid the if else.
+*/
 size_t				format_parser(const char *format, t_data *d)
 {
 	size_t offset;
@@ -77,28 +88,35 @@ size_t				format_parser(const char *format, t_data *d)
 
 /*
 **	ft_process is the dispacher.
-**	It built the config.
 **	Invoke the right function to convert the va_arg.
 **	return the offset to move in the format string.
 */
-
 static inline size_t	ft_process(const char *format, t_data *d, va_list vl)
 {
 	size_t	offset;
+	char	conv_char;
+	t_conv	conversion_fn;
 
 	offset = 1;
 	ft_bzero(&d->conf, sizeof(t_config));
 	offset = format_parser(format, d);
 	// while (format[offset] && (g_conv[(int)format[offset]] == NULL))
 	// 	offset++;
-	if (format[offset] == '\0')
+	conv_char = format[offset];
+	if (conv_char == '\0')
 		return (1);
-	if (g_conv[(int)format[offset]])
-		d->idx += g_conv[(int)format[offset]](vl, d);
+	conversion_fn = g_conv[(int)conv_char];
+	if (conversion_fn)
+		d->idx += conversion_fn(vl, d);
 	return (offset + 1);
 }
 
 
+/*
+**	Main loop
+**	Flush the buffer if there is less than 50 char remaining.
+**	Return the carry value. (Number of char written in stdout)
+*/
 int						ft_printf(const char *format, ...)
 {
 	va_list		vl;
