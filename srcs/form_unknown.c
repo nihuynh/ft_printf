@@ -13,7 +13,8 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-int		f_unkn(va_list vl, t_data *data)
+int
+	f_unkn(va_list vl, t_data *data)
 {
 	(void)vl;
 	(void)data;

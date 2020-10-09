@@ -14,7 +14,8 @@
 #include "ft_printf.h"
 #include "ftmem.h"
 
-int		form_character(va_list vl, t_data *data)
+int
+	form_character(va_list vl, t_data *data)
 {
 	if (data->conf.width)
 	{

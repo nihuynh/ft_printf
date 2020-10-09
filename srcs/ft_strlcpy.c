@@ -12,7 +12,8 @@
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, char const *src, size_t n)
+size_t
+	ft_strlcpy(char *dst, char const *src, size_t n)
 {
 	size_t	len;
 

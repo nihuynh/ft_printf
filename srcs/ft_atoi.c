@@ -12,7 +12,8 @@
 
 #include "ftctype.h"
 
-int		ft_atoi(char const *str)
+int
+	ft_atoi(char const *str)
 {
 	int res;
 	int neg;

@@ -15,11 +15,12 @@
 #include "ft_printf.h"
 #include "ftmem.h"
 
-int        form_string(va_list vl, t_data *data)
+int
+	form_string(va_list vl, t_data *data)
 {
-    char            *str;
-    unsigned int    res;
-    unsigned int    lenstr;
+	char			*str;
+	unsigned int	res;
+	unsigned int	lenstr;
 
 	str = (char *)va_arg(vl, char*);
 	if (str == NULL)
@@ -40,6 +41,6 @@ int        form_string(va_list vl, t_data *data)
 	{
 		ft_memset(&data->buff[data->idx + res], ' ', data->conf.rpad - lenstr);
 		data->idx += data->conf.rpad - lenstr;
-    }
-    return (res);
+	}
+	return (res);
 }

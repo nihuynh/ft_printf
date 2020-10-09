@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static inline int	ft_toupper(int c)
+static inline int
+	ft_toupper(int c)
 {
 	return ((c >= 97 && c <= 122)) ? c - 32 : c;
 }
 
-int					ft_itob_base(int value, int base, char *bf, int upc)
+int
+	ft_itob_base(int value, int base, char *bf, int upc)
 {
 	char			*bstr;
 	int				idx;

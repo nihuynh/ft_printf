@@ -16,10 +16,11 @@
 #include "ft_printf.h"
 #include "ftmem.h"
 
-int		form_pointer(va_list vl, t_data *d)
+int
+	form_pointer(va_list vl, t_data *d)
 {
 	int				res;
-	unsigned int    lenstr;
+	unsigned int	lenstr;
 
 	lenstr = 2 + ft_lltob_base((long long)va_arg(vl, uintptr_t),
 		16, (char *)&d->tmp, 0);

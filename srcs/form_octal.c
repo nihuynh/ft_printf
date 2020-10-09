@@ -14,31 +14,12 @@
 #include "ftstring.h"
 #include "ft_printf.h"
 
-int		form_octal(va_list vl, t_data *d)
+int
+	form_octal(va_list vl, t_data *d)
 {
-	int		res;
+	int	res;
 
 	ft_itob_base((int)va_arg(vl, int), 8, (char *)&d->tmp, 0);
 	res = ft_strlcpy(&d->buff[d->idx], (const char *)&d->tmp, PF_BUFF - d->idx);
 	return (res);
 }
-/*
-void		print_o(t_bag *bag, va_list args, int *i)
-{
-	int len;
-	char *str;
-	char *res;
-	long input;
-
-	input = va_arg(args, long);
-	if (input < 0)
-		input = (unsigned long)input;
-	str = ft_itoa2(input);
-	printf("TRYING TO PRINT 4294967286: %s\n", str);
-	len = ft_strlen(str);
-	res = print_octal(str, &len);
-	*i += len;
-	write(1, res, len);
-}
-
-*/

@@ -13,7 +13,8 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-int		form_float(va_list vl, t_data *data)
+int
+	form_float(va_list vl, t_data *data)
 {
 	(void)vl;
 	(void)data;

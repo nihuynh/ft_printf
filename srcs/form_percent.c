@@ -14,7 +14,8 @@
 #include "ft_printf.h"
 #include "ftmem.h"
 
-int		form_percent(va_list vl, t_data *data)
+int
+	form_percent(va_list vl, t_data *data)
 {
 	(void)vl;
 	if (data->conf.width)

@@ -64,7 +64,7 @@ This is a detail output for the current work cases.
 Basic test	=	77/182		Fails
 undefined	=	40/55		Fails
 moulitest	=	37/48		Fails (timeout)
-PFT         =   784/1765    Pass
+PFT			=	373/694		Pass
 Curqui		=	110/233		Pass
 ```
 ```

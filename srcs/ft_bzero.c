@@ -12,7 +12,8 @@
 
 #include "ftmem.h"
 
-void	ft_bzero(void *str, size_t n)
+void
+	ft_bzero(void *str, size_t n)
 {
 	t_byte	*pstr;
 	t_byte	val;

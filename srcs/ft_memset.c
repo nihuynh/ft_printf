@@ -12,7 +12,8 @@
 
 #include "ftmem.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void
+	*ft_memset(void *b, int c, size_t len)
 {
 	t_byte *pb;
 

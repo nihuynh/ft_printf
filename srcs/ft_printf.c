@@ -25,14 +25,16 @@
 **	to handle the return value of printf.
 **	Reset the idx value so the next data is at the start of the buffer.
 */
-void					flush_buff(t_data *data)
+void
+	flush_buff(t_data *data)
 {
 	write(1, &data->buff, data->idx);
 	data->carry += data->idx;
 	data->idx = 0;
 }
 
-static inline void		init_data(t_data *data)
+static inline void
+	init_data(t_data *data)
 {
 	data->carry = 0;
 	data->idx = 0;
@@ -44,7 +46,8 @@ static inline void		init_data(t_data *data)
 **	Return the offset between the % abd the conv char
 **	TODO: Make uses the g_mod to avoid the if else.
 */
-size_t				format_parser(const char *format, t_data *d)
+size_t
+	format_parser(const char *format, t_data *d)
 {
 	size_t offset;
 
@@ -91,7 +94,8 @@ size_t				format_parser(const char *format, t_data *d)
 **	Invoke the right function to convert the va_arg.
 **	return the offset to move in the format string.
 */
-static inline size_t	ft_process(const char *format, t_data *d, va_list vl)
+static inline size_t
+	ft_process(const char *format, t_data *d, va_list vl)
 {
 	size_t	offset;
 	char	conv_char;
@@ -117,7 +121,8 @@ static inline size_t	ft_process(const char *format, t_data *d, va_list vl)
 **	Flush the buffer if there is less than 50 char remaining.
 **	Return the carry value. (Number of char written in stdout)
 */
-int						ft_printf(const char *format, ...)
+int
+	ft_printf(const char *format, ...)
 {
 	va_list		vl;
 	t_data		data;

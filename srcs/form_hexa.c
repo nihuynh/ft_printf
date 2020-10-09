@@ -14,7 +14,8 @@
 #include "ftstring.h"
 #include "ft_printf.h"
 
-int		form_hexa(va_list vl, t_data *d)
+int
+	form_hexa(va_list vl, t_data *d)
 {
 	int	res;
 
