@@ -19,15 +19,15 @@
 # define PF_BUFF	2048
 # define END_FLAG	"cspdiouxXf%"
 
-# define FLAG_H			(1UL)
-# define FLAG_HH		(1UL << 1)
-# define FLAG_L			(1UL << 2)
-# define FLAG_LL		(1UL << 3)
-# define FLAG_INTMAX	(1UL << 4)
-# define FLAG_SIZE_T	(1UL << 5)
-# define FLAG_UPCASE	(1UL << 6)
-# define FLAG_SHOWSIGN	(1UL << 7)
-# define FLAG_HASH		(1UL << 8)
+# define FLAG_H			1
+# define FLAG_HH		2
+# define FLAG_L			4
+# define FLAG_LL		8
+# define FLAG_INTMAX	16
+# define FLAG_SIZE_T	32
+# define FLAG_UPCASE	64
+# define FLAG_SHOWSIGN	128
+# define FLAG_HASH		256
 
 typedef struct s_data	t_data;
 
@@ -56,6 +56,5 @@ int					ft_itob_base(int value, int base, char *buff, int upcase);
 int					ft_lltob_base(long long value, int base, char *bf, int upc);
 int					ft_ulltob_base(unsigned long long value, int base, char *bf,
 	int upc);
-
 
 #endif

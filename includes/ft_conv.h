@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 02:35:14 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/19 13:33:15 by nihuynh          ###   ########.fr       */
+/*   Updated: 2020/10/15 18:32:59 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,32 +59,46 @@ static const t_conv g_conv[256] =
 	['n'] = &f_unkn
 };
 
-static const t_conv g_mod[256] =
+typedef int	(*t_mod)(t_config *conf, char *format);
+
+int			mod_hash(t_config *conf, char *format);
+int			mod_zero(t_config *conf, char *format);
+int			mod_dot(t_config *conf, char *format);
+int			mod_plus(t_config *conf, char *format);
+int			mod_minus(t_config *conf, char *format);
+int			mod_space(t_config *conf, char *format);
+int			mod_digit(t_config *conf, char *format);
+int			mod_h(t_config *conf, char *format);
+int			mod_l(t_config *conf, char *format);
+
+int			mod_unkn(t_config *conf, char *format);
+
+static const t_mod g_mod[256] =
 {
-	['#'] = &f_unkn,
-	['0'] = &f_unkn,
-	['.'] = &f_unkn,
-	['+'] = &f_unkn,
-	['-'] = &f_unkn,
-	[' '] = &f_unkn,
-	['1'] = &f_unkn,
-	['2'] = &f_unkn,
-	['3'] = &f_unkn,
-	['4'] = &f_unkn,
-	['5'] = &f_unkn,
-	['6'] = &f_unkn,
-	['7'] = &f_unkn,
-	['8'] = &f_unkn,
-	['9'] = &f_unkn,
-	['h'] = &f_unkn,
-	['H'] = &f_unkn,
-	['l'] = &f_unkn,
-	['L'] = &f_unkn,
-	['j'] = &f_unkn,
-	['J'] = &f_unkn,
-	['z'] = &f_unkn,
-	['Z'] = &f_unkn,
-	['*'] = &f_unkn
+	['#'] = &mod_hash,
+	['0'] = &mod_zero,
+	['.'] = &mod_dot,
+	['+'] = &mod_plus,
+	['-'] = &mod_minus,
+	[' '] = &mod_space,
+	['1'] = &mod_digit,
+	['2'] = &mod_digit,
+	['3'] = &mod_digit,
+	['4'] = &mod_digit,
+	['5'] = &mod_digit,
+	['6'] = &mod_digit,
+	['7'] = &mod_digit,
+	['8'] = &mod_digit,
+	['9'] = &mod_digit,
+	['h'] = &mod_h,
+	['l'] = &mod_l,
+	['H'] = &mod_unkn,
+	['L'] = &mod_unkn,
+	['j'] = &mod_unkn,
+	['J'] = &mod_unkn,
+	['z'] = &mod_unkn,
+	['Z'] = &mod_unkn,
+	['*'] = &mod_unkn
 };
 
 #endif

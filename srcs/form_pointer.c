@@ -35,6 +35,6 @@ int
 	{
 		ft_memset(&d->buff[d->idx + res], ' ', d->conf.rpad - lenstr);
 		d->idx += d->conf.rpad - lenstr;
-    }
+	}
 	return (res);
 }

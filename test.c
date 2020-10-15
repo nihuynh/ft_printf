@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 06:21:43 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/01 12:26:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2020/10/15 19:27:22 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	weird_test()
 
 void	basic_test(void)
 {
-	PRINTF_TEST("%s", "Just a string arg");
-	PRINTF_TEST("Enterlace %s", "string");
-	PRINTF_TEST("%d", 5000);
-	PRINTF_TEST("Enterlace %d", 5000);
-	PRINTF_TEST("%c", 'w');
-	PRINTF_TEST("Enterlace %c", 'q');
+	// PRINTF_TEST("%s", "Just a string arg");
+	// PRINTF_TEST("Enterlace %s", "string");
+	// PRINTF_TEST("%d", 5000);
+	// PRINTF_TEST("Enterlace %d", 5000);
+	// PRINTF_TEST("%c", 'w');
+	// PRINTF_TEST("Enterlace %c", 'q');
 	PRINTF_TEST("%5c", 'c');
 	PRINTF_TEST("%-5c", 'c');
 }
@@ -62,16 +62,16 @@ void	segv_test(void)
 
 	var = 42;
 	// diD
-	PRINTF_TEST("%5i", 52625);
+	PRINTF_TEST("%.12d", 1144);
 	// PRINTF_TEST("%00+10.4d", 0);s
 }
 
 int        main(void)
 {
     // weird_test();
-    // basic_test();
-	wip_test();
-	segv_test();
+    basic_test();
+	// wip_test();
+	// segv_test();
 	while (0)
         ;
     return (0);

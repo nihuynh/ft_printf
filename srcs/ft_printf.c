@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 04:37:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/04/22 12:38:44 by nihuynh          ###   ########.fr       */
+/*   Updated: 2020/10/15 19:30:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "ft_conv.h"
 #include "ft_printf.h"
 #include "ftmem.h"
-#include "ftconvert.h"
-#include "ftctype.h"
 
 /*
 **	Write the data of the buffer into stdout.
@@ -25,6 +23,7 @@
 **	to handle the return value of printf.
 **	Reset the idx value so the next data is at the start of the buffer.
 */
+
 void
 	flush_buff(t_data *data)
 {
@@ -46,41 +45,21 @@ static inline void
 **	Return the offset between the % abd the conv char
 **	TODO: Make uses the g_mod to avoid the if else.
 */
+
 size_t
 	format_parser(const char *format, t_data *d)
 {
-	size_t offset;
+	size_t	offset;
+	t_mod	mod_fn;
 
 	offset = 1;
 	while (format[offset] && (g_mod[(int)format[offset]]))
 	{
-		if (format[offset] == '0')
-			d->conf.zpad = ft_atoi(&format[offset]);
-		else if (ft_isdigit(format[offset]))
-			d->conf.width = ft_atoi(&format[offset]);
-		else if (format[offset] == '-')
-		{
-			while (format[offset] == '-')
-				offset++;
-			d->conf.rpad = ft_atoi(&format[offset]);
-		}
-		else if (format[offset] == ' ')
-			d->conf.space = ft_atoi(&format[offset]) + 1;
-		else if (format[offset] == '+')
-			d->conf.flags |= (FLAG_SHOWSIGN);
-		else if (format[offset] == '.')
-			d->conf.prec = ft_atoi(&format[++offset]) + 1;
-		else if (format[offset] == '#')
-			d->conf.flags |= (FLAG_HASH);
-		else if (format[offset] == 'l')
-			d->conf.flags |= (format[++offset] == 'l') ? (FLAG_LL) : (FLAG_L);
-		else if (format[offset] == 'h')
-			d->conf.flags |= (format[++offset] == 'h') ? (FLAG_HH) : (FLAG_H);
+		mod_fn = g_mod[(int)format[offset]];
+		if (mod_fn)
+			offset += mod_fn(&d->conf, (char *)&format[offset]);
 		if ((g_conv[(int)format[offset]]))
-			break;
-		offset++;
-		while (ft_isdigit(format[offset]))
-			offset++;
+			break ;
 	}
 	if (format[offset] >= 97 && format[offset] <= 122)
 		d->conf.flags |= (FLAG_UPCASE);
@@ -88,12 +67,12 @@ size_t
 	return (offset);
 }
 
-
 /*
 **	ft_process is the dispacher.
 **	Invoke the right function to convert the va_arg.
 **	return the offset to move in the format string.
 */
+
 static inline size_t
 	ft_process(const char *format, t_data *d, va_list vl)
 {
@@ -104,8 +83,6 @@ static inline size_t
 	offset = 1;
 	ft_bzero(&d->conf, sizeof(t_config));
 	offset = format_parser(format, d);
-	// while (format[offset] && (g_conv[(int)format[offset]] == NULL))
-	// 	offset++;
 	conv_char = format[offset];
 	if (conv_char == '\0')
 		return (1);
@@ -115,12 +92,12 @@ static inline size_t
 	return (offset + 1);
 }
 
-
 /*
 **	Main loop
 **	Flush the buffer if there is less than 50 char remaining.
 **	Return the carry value. (Number of char written in stdout)
 */
+
 int
 	ft_printf(const char *format, ...)
 {
