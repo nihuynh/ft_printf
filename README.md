@@ -55,34 +55,34 @@ This is a detail output for the current work cases.
 - [ ] u-U
 - [ ] x-X
 - [ ] float
-- [ ] Use g_mod table
-- [ ] Unit test ?
+- [x] Use g_mod table
+- [ ] Unit test
 - [ ] Refactor
 
 ## Current test results:
 ```
-Basic test	=	77/182		Fails
-undefined	=	40/55		Fails
-moulitest	=	37/48		Fails (timeout)
-PFT			=	373/694		Pass
+Basic test	=	56/182		Fails
+undefined	=	37/55		Fails
+moulitest	=	(timeout)
+PFT			=	393/694		Pass
 Curqui		=	110/233		Pass
 ```
 ```
-Basic tests          2/2
-Conv d-i-D           34/40
-Conv u-U             0/26
-Conv o-O             13/34
-Conv x-X             13/39
-Conv c               8/8
-Conv C               1/22
-Conv s               15/15
-Conv S               4/23
-Conv p               7/7
-Percent              12/12
-Mixed tests          1/5
-----------------------------
-TOTAL                110/233
-----------------------------
+	Basic tests          2/2
+	Conv d-i-D           35/40
+	Conv u-U             0/26
+	Conv o-O             13/34
+	Conv x-X             13/39
+	Conv c               8/8
+	Conv C               1/22
+	Conv s               15/15
+	Conv S               4/23
+	Conv p               7/7
+	Percent              12/12
+	Mixed tests          1/5
+	----------------------------
+	TOTAL                111/233
+	----------------------------
 ```
 ## Notes:
 ```

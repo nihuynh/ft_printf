@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 18:21:02 by nihuynh           #+#    #+#             */
-/*   Updated: 2019/05/01 12:28:11 by nihuynh          ###   ########.fr       */
+/*   Updated: 2020/10/16 18:53:05 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,52 +34,58 @@ static inline long long
 }
 
 static inline void
-	padding(t_data *data, t_config *cfg, long long carry, int len_num)
+	padding(t_data *data, t_config *cfg, long long carry, unsigned int len_num)
 {
-	if (data->conf.width)
+	unsigned int len_local;
+	unsigned int zero_pad;
+
+	len_num += (((cfg->flags & FLAG_SHOWSIGN) && carry >= 0) || carry < 0);
+	if (cfg->width && cfg->width > cfg->prec)
 	{
-		ft_memset(&data->buff[data->idx], ' ', data->conf.width - len_num - 1);
-		data->idx += data->conf.width - len_num - 1;
+		len_local = (cfg->prec > len_num) ? cfg->prec - 1 : len_num;
+		ft_memset(&data->buff[data->idx], ' ', cfg->width - len_local);
+		data->idx += cfg->width - len_local;
 	}
 	if (cfg->space)
 	{
 		ft_memset(&data->buff[data->idx], ' ', cfg->space);
-		data->idx += cfg->space;
+		data->idx += cfg->space - ((cfg->flags & FLAG_SHOWSIGN) || carry < 0);
 	}
 	if (((cfg->flags & FLAG_SHOWSIGN) && carry >= 0) || carry < 0)
 		data->buff[data->idx++] = (carry < 0) ? '-' : '+';
-	if (cfg->prec > (unsigned int)len_num)
+	if (cfg->prec > len_num)
 	{
-		ft_memset(&data->buff[data->idx], '0', cfg->prec - len_num - 1);
-		data->idx += cfg->prec - len_num - 1;
+		zero_pad = cfg->prec - len_num - !(carry < 0);
+		ft_memset(&data->buff[data->idx], '0', zero_pad);
+		data->idx += zero_pad;
 	}
-	if (cfg->zpad > (unsigned int)len_num)
+	if (cfg->zpad > len_num)
 	{
 		ft_memset(&data->buff[data->idx], '0', cfg->zpad - len_num);
-		data->idx += cfg->zpad - len_num - (carry != 0);
+		data->idx += cfg->zpad - len_num;
 	}
 }
 
 int
 	form_integer(va_list vl, t_data *d)
 {
-	int			res;
-	int			len_num;
-	long long	carry;
-	long long	ucarry;
+	int					res;
+	unsigned int		len_num;
+	long long			carry;
+	unsigned long long	ucarry;
 
 	res = 0;
 	carry = cast(vl, &(d->conf));
 	if (d->conf.prec == 1 && carry == 0)
 		return (0);
 	ucarry = (carry > 0) ? carry : -carry;
-	len_num = ft_lltob_base(ucarry, 10, (char *)&d->tmp, 0);
+	len_num = ft_ulltob_base(ucarry, 10, (char *)&d->tmp, 0);
 	padding(d, &d->conf, carry, len_num);
 	res = ft_strlcpy(&d->buff[d->idx], (const char *)&d->tmp, PF_BUFF - d->idx);
-	if (d->conf.rpad > (unsigned int)(len_num + 1))
+	if (d->conf.rpad > (len_num + 1))
 	{
-		ft_memset(&d->buff[d->idx + res], ' ', d->conf.rpad - len_num);
-		res += d->conf.rpad - len_num;
+		ft_memset(&d->buff[d->idx + res], ' ', d->conf.rpad - len_num - (carry < 0));
+		res += d->conf.rpad - len_num - (carry < 0);
 	}
 	return (res);
 }

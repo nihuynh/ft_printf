@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 17:24:41 by nihuynh           #+#    #+#             */
-/*   Updated: 2020/10/15 19:37:20 by nihuynh          ###   ########.fr       */
+/*   Updated: 2020/10/16 18:40:11 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,15 @@ int
 {
 	int offset;
 
-	offset = 0;
+	offset = 1;
+	format++;
 	conf->zpad = ft_atoi(format);
+	if (*format == '+')
+	{
+		conf->flags |= (FLAG_SHOWSIGN);
+		format++;
+		offset++;
+	}
 	while (ft_isdigit((int)*format))
 	{
 		format++;

@@ -6,13 +6,13 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 18:10:56 by nihuynh           #+#    #+#              #
-#    Updated: 2020/10/15 19:36:56 by nihuynh          ###   ########.fr        #
+#    Updated: 2020/10/16 18:02:17 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	libftprintf.a
 RUNMODE	?=	dev
-SRC		:=	ft_printf.c ft_itob_base.c ft_lltob_base.c
+SRC		:=	ft_printf.c ft_itob_base.c ft_lltob_base.c ft_ulltob_base.c
 SRC		+=	form_unknown.c form_percent.c form_integer.c form_unsigned.c\
 			form_octal.c form_hexa.c form_float.c form_character.c\
 			form_string.c form_pointer.c mod_1.c mod_2.c
